@@ -36,7 +36,6 @@ SET @rowCounts = (
     SEPARATOR ' union all '
   )
   FROM information_schema.tables
-  -- WHERE TABLE_SCHEMA IN ('gppheno','gppheno_dumb_copy')
   WHERE FIND_IN_SET(TABLE_SCHEMA, @tableSchema)
   AND TABLE_TYPE = 'BASE TABLE'
 );
