@@ -28,11 +28,9 @@ table which is often a guess, especially for InnoDB tables.
 
 SET @rowCounts = (
   SELECT group_concat(
-	CONCAT(
-	  -- 'SELECT ''',TABLE_SCHEMA,' - ',TABLE_NAME,''', COUNT(*) FROM ', TABLE_NAME
-      -- 'SELECT TABLE_NAME, COUNT(*) FROM ', TABLE_NAME
+    CONCAT(
       'SELECT ''',TABLE_SCHEMA,'''AS ''schema'',''',TABLE_NAME,'''AS ''table'', COUNT(*) FROM ', TABLE_SCHEMA,'.',TABLE_NAME
-	) 
+    ) 
     SEPARATOR ' union all '
   )
   FROM information_schema.tables
